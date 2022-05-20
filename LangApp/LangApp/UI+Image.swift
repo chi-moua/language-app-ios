@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import UIKit
+
+struct UI {
+    enum Image: String, CaseIterable {
+        case headphoneIcon
+        case microphoneIcon
+        case newspaperIcon
+        case tvIcon
+        
+        var image: UIImage {
+            let image = UIImage(named: rawValue)
+            return image!
+        }
+    }
+}
