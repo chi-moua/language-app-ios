@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+class VideoViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+}
