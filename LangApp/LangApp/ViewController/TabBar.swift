@@ -13,14 +13,19 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setup()
     }
     
     private func setup() {
+        setupViewControllers()
+        setupStyle()
+    }
+    
+    private func setupViewControllers() {
         let newsTab = NewsViewController()
         let newsTabBarItem = UITabBarItem(
             title: "News",
@@ -53,7 +58,32 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         )
         musicTab.tabBarItem = musicTabBarItem
         
-        self.viewControllers = [newsTab, videoTab, podcastTab, musicTab]
+        let viewControllers = [newsTab, videoTab, podcastTab, musicTab]
+        self.setViewControllers(viewControllers, animated: false)
+    }
+    
+    
+    private func setupStyle() {
+        let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        
+        let barTintColor: UIColor = .white
+        tabBarAppearance.backgroundColor = barTintColor
+        
+        updateTabBarItemAppearance(appearance: tabBarAppearance.compactInlineLayoutAppearance)
+        updateTabBarItemAppearance(appearance: tabBarAppearance.inlineLayoutAppearance)
+        updateTabBarItemAppearance(appearance: tabBarAppearance.stackedLayoutAppearance)
+        
+        self.tabBar.standardAppearance = tabBarAppearance
+        self.tabBar.scrollEdgeAppearance = tabBarAppearance
+    }
+
+    private func updateTabBarItemAppearance(appearance: UITabBarItemAppearance) {
+        let tintColor: UIColor = .black
+        //let unselectedItemTintColor: UIColor = .green
+        
+        //appearance.selected.iconColor = tintColor
+        appearance.normal.iconColor = tintColor
     }
 
 }
