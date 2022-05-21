@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C7C03AB283987C400E673F0 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C03AA283987C400E673F0 /* State.swift */; };
+		0C7C03AE2839896F00E673F0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C03AD2839896F00E673F0 /* NewsTableViewCell.swift */; };
+		0C7C03B0283989A200E673F0 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */; };
 		0C7E95DD2835B3D2005F78A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E95DC2835B3D2005F78A3 /* AppDelegate.swift */; };
 		0C7E95DF2835B3D2005F78A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E95DE2835B3D2005F78A3 /* SceneDelegate.swift */; };
 		0C7E95E62835B3D6005F78A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C7E95E52835B3D6005F78A3 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C7C03AA283987C400E673F0 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		0C7C03AD2839896F00E673F0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C7E95D92835B3D2005F78A3 /* LangApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LangApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7E95DC2835B3D2005F78A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C7E95DE2835B3D2005F78A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +107,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7C03A9283986B600E673F0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0C7C03AC2839888B00E673F0 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				0C7E96162837E9C8005F78A3 /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		0C7E95D02835B3D2005F78A3 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +155,7 @@
 				0C7E96112835B683005F78A3 /* CustomCell */,
 				0C7E95E72835B3D6005F78A3 /* LaunchScreen.storyboard */,
 				0C7E961E2837F685005F78A3 /* Main.storyboard */,
+				0C7C03A9283986B600E673F0 /* Network */,
 				0C7E960D2835B4DF005F78A3 /* Redux */,
 				0C7E960C2835B4CF005F78A3 /* ViewController */,
 				0C7E96102835B51A005F78A3 /* ViewModel */,
@@ -161,8 +183,8 @@
 		0C7E960C2835B4CF005F78A3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0C7C03AC2839888B00E673F0 /* News */,
 				0C7E96122835BFEE005F78A3 /* TabBar.swift */,
-				0C7E96162837E9C8005F78A3 /* NewsViewController.swift */,
 				0C7E96182837EA1F005F78A3 /* VideoViewController.swift */,
 				0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */,
 				0C7E961C2837EA65005F78A3 /* MusicViewController.swift */,
@@ -182,6 +204,7 @@
 		0C7E960E2835B4F3005F78A3 /* State */ = {
 			isa = PBXGroup;
 			children = (
+				0C7C03AA283987C400E673F0 /* State.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -203,6 +226,8 @@
 		0C7E96112835B683005F78A3 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				0C7C03AD2839896F00E673F0 /* NewsTableViewCell.swift */,
+				0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -241,6 +266,7 @@
 				0C7E95D52835B3D2005F78A3 /* Sources */,
 				0C7E95D62835B3D2005F78A3 /* Frameworks */,
 				0C7E95D72835B3D2005F78A3 /* Resources */,
+				42FF0390EA10A5C91836B9C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,6 +305,7 @@
 				0C7E95F52835B3D6005F78A3 /* Sources */,
 				0C7E95F62835B3D6005F78A3 /* Frameworks */,
 				0C7E95F72835B3D6005F78A3 /* Resources */,
+				A53CE696B9E1A40B3B511762 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,6 +410,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		42FF0390EA10A5C91836B9C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LangApp/Pods-LangApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LangApp/Pods-LangApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LangApp/Pods-LangApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		94536188C606D6A3507A76D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -427,6 +471,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A53CE696B9E1A40B3B511762 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LangApp-LangAppUITests/Pods-LangApp-LangAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LangApp-LangAppUITests/Pods-LangApp-LangAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LangApp-LangAppUITests/Pods-LangApp-LangAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A89123D9BF3B8209B94DF8E9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,9 +514,12 @@
 			files = (
 				0C7E96152837E512005F78A3 /* UI+Image.swift in Sources */,
 				0C7E96192837EA1F005F78A3 /* VideoViewController.swift in Sources */,
+				0C7C03AE2839896F00E673F0 /* NewsTableViewCell.swift in Sources */,
+				0C7C03B0283989A200E673F0 /* NewsCollectionViewCell.swift in Sources */,
 				0C7E961B2837EA47005F78A3 /* PodcastViewController.swift in Sources */,
 				0C7E95DD2835B3D2005F78A3 /* AppDelegate.swift in Sources */,
 				0C7E96172837E9C8005F78A3 /* NewsViewController.swift in Sources */,
+				0C7C03AB283987C400E673F0 /* State.swift in Sources */,
 				0C7E961D2837EA65005F78A3 /* MusicViewController.swift in Sources */,
 				0C7E95DF2835B3D2005F78A3 /* SceneDelegate.swift in Sources */,
 				0C7E96132835BFEE005F78A3 /* TabBar.swift in Sources */,
