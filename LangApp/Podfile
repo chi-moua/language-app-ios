@@ -7,9 +7,9 @@ target 'LangApp' do
   platform :ios, '13.0'
 
   # Pods for LangApp
+  pod 'ReSwift'
 
   target 'LangAppTests' do
-	pod 'ReSwift'
   end
 
   target 'LangAppUITests' do
