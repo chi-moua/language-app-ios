@@ -8,15 +8,26 @@
 import UIKit
 
 class NewsTableViewCell: UITableViewCell {
-
+    
+    var collectionView: UICollectionView!
     
     func setup<D: UICollectionViewDelegate & UICollectionViewDataSource>(delegate: D, forRow row: Int) {
-        let collectionView = UICollectionView()
+        collectionView = UICollectionView()
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ccell")
         collectionView.delegate = delegate
         collectionView.dataSource = delegate
         collectionView.tag = row
         collectionView.reloadData()
-        self.contentView.addSubview(collectionView)
+        contentView.addSubview(collectionView)
+        
+        setupConstrainsts()
+    }
+    
+    private func setupConstrainsts() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        //topAnchor
+        //bottomAnchor
+        //leadingAnchor
+        //trailingAnchor
     }
 }
