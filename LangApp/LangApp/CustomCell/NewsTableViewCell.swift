@@ -20,14 +20,19 @@ class NewsTableViewCell: UITableViewCell {
         collectionView.reloadData()
         contentView.addSubview(collectionView)
         
+        
         setupConstrainsts()
     }
     
     private func setupConstrainsts() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        //topAnchor
-        //bottomAnchor
-        //leadingAnchor
-        //trailingAnchor
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor).isActive = true
+        
+        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        
     }
 }

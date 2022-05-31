@@ -34,6 +34,7 @@ class NewsViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
     }
 
 }
