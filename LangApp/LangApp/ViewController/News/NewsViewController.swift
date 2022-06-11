@@ -11,22 +11,22 @@ class NewsViewController: UIViewController {
     var tableView: UITableView!
     var safeArea: UILayoutGuide!
     
+    private var articlesData: [[Article]] = []
+    private var selectedLanguage: String = "english"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         tableView = UITableView()
         safeArea = view.layoutMarginsGuide
         setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        grabArticles(language: self.selectedLanguage)
     }
     
     func setupView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tcell")
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "tcell")
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,22 +45,27 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tcell", for: indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "tcell", for: indexPath) as? NewsTableViewCell {
+            print("tcell cell forRowAt")
+            cell.initialize()
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return articlesData.count
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("tableview cell will display")
         if let tableViewCell = cell as? NewsTableViewCell {
             tableViewCell.setup(delegate: self, forRow: indexPath.section)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 200
     }
     
     //titleforheader
@@ -70,11 +75,15 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return articlesData[collectionView.tag].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ccell", for: indexPath)as? NewsCollectionViewCell {
+        print("cell for item at")
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ccell", for: indexPath) as? NewsCollectionViewCell {
+            let article = articlesData[collectionView.tag][indexPath.row]
+            cell.setup(imageUrl: article.imageUrl, title: article.title)
+            print("ccell \(article.title)")
             return cell
         }
         
@@ -88,4 +97,24 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     
+}
+
+extension NewsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 414, height: 200)
+    }
+}
+
+
+extension NewsViewController {
+    func grabArticles(language: String) {
+        ArticleService().getArticlesByLanguage(language: language, completionHandler: { [self] (articles) in
+            self.articlesData = articles
+            //print(articles)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
 }

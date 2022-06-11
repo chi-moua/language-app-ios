@@ -9,24 +9,30 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    var collectionView: UICollectionView!
+    let collectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+    
+    func initialize() {
+        layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        collectionView.setCollectionViewLayout(layout, animated: true)
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "ccell")
+        contentView.addSubview(collectionView)
+        setupConstrainsts()
+        print("register ccell")
+    }
     
     func setup<D: UICollectionViewDelegate & UICollectionViewDataSource>(delegate: D, forRow row: Int) {
-        collectionView = UICollectionView()
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ccell")
+        print("register ccell delegate")
         collectionView.delegate = delegate
         collectionView.dataSource = delegate
         collectionView.tag = row
         collectionView.reloadData()
-        contentView.addSubview(collectionView)
-        
-        
-        setupConstrainsts()
     }
     
     private func setupConstrainsts() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        //contentView.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor).isActive = true
