@@ -9,59 +9,60 @@ import UIKit
 
 class NewsCollectionViewCell: UICollectionViewCell {
     
-    var imageView: UIImageView!
-    var titleLabel: UILabel!
+    var stackView: UIStackView = UIStackView()
+    var imageView: UIImageView = UIImageView()
+    var titleLabel: UILabel = UILabel()
+    
     private var imageUrl: String!
     private var title: String!
     
     func setup(imageUrl: String, title: String) {
-        titleLabel = UILabel()
-        imageView = UIImageView()
-        
         self.imageUrl = imageUrl
         self.title = title
         
         setupImage()
         setupTitle()
-        
-        self.contentView.layer.cornerRadius = 8.0
-        self.contentView.layer.borderColor = UIColor.lightGray.cgColor
-        self.contentView.layer.borderWidth = 0.5
-        
-        self.contentView.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor).isActive = true
-        self.contentView.bottomAnchor.constraint(equalTo: self.imageView.bottomAnchor).isActive = true
-        
-        
+        setupStackView()
+        setupStyle()
+
     }
     
-    func setupTitle() {
+    private func setupStackView() {
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.axis = .horizontal
+        stackView.distribution = .fillProportionally
+        stackView.setCustomSpacing(10, after: imageView)
+        contentView.addSubview(stackView)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+    
+    private func setupTitle() {
         titleLabel.text = self.title
         titleLabel.numberOfLines = 5
-        titleLabel.contentMode = UIView.ContentMode.left
-        self.contentView.addSubview(titleLabel)
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.imageView.topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: self.imageView.bottomAnchor).isActive = true
+        titleLabel.contentMode = UIView.ContentMode.right
     }
     
-    func setupImage() {
+    private func setupImage() {
         let url = URL(string: self.imageUrl)
         if let url = url {
             downloadImage(from: url)
         }
         imageView.contentMode = .scaleAspectFill
-        imageView.frame = CGRect(x: 0, y: 0, width: 180, height: 120)
-        self.contentView.addSubview(imageView)
+        imageView.clipsToBounds = true
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        //imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        let constraint = imageView.widthAnchor.constraint(equalToConstant: 180)
+        constraint.priority = .init(1000)
+        constraint.isActive = true
     }
-    
+}
+
+extension NewsCollectionViewCell {
     private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
@@ -75,5 +76,14 @@ class NewsCollectionViewCell: UICollectionViewCell {
                 self.imageView.image = UIImage(data: data)
             }
         }
+    }
+}
+
+extension NewsCollectionViewCell {
+    private func setupStyle() {
+        contentView.layer.cornerRadius = 8.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderWidth = 1.0
+        contentView.clipsToBounds = true
     }
 }

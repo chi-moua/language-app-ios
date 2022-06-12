@@ -101,7 +101,7 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension NewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 414, height: 200)
+        return CGSize(width: 400, height: 180)
     }
 }
 
