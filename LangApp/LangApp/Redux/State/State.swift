@@ -9,5 +9,5 @@ import Foundation
 import ReSwift
 
 struct State {
-    
+    var newsState: NewsState = NewsState()
 }

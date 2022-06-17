@@ -5,25 +5,36 @@
 //  Created by Kongfuechi Moua on 5/20/22.
 //
 
+import ReSwift
 import UIKit
 
 class NewsViewController: UIViewController {
     var tableView: UITableView!
     var safeArea: UILayoutGuide!
     
-    private var articlesData: [[Article]] = []
-    private var selectedLanguage: String = "english"
+    private let store: Store<State>
+    private var viewModel: NewsViewModel
+    
+    init(store: Store<State>) {
+        self.store = store
+        self.viewModel = NewsViewModel(store: store)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         tableView = UITableView()
         safeArea = view.layoutMarginsGuide
-        setupView()
-        grabArticles(language: self.selectedLanguage)
+        setupStaticView()
+        //grabArticles(language: self.selectedLanguage)
     }
     
-    func setupView() {
+    func setupStaticView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "tcell")
@@ -35,6 +46,10 @@ class NewsViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
+    }
+    
+    func setupDynamicView(state: State.NewsState) {
+        viewModel.articlesData = state.articles
     }
 
 }
@@ -54,7 +69,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return articlesData.count
+        return viewModel.articlesData.categoryCount
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -75,13 +90,17 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return articlesData[collectionView.tag].count
+        return viewModel.articlesData.retrieveCategoryList(index: collectionView.tag)?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cell for item at")
+        
+        guard let articleList = viewModel.articlesData.retrieveCategoryList(index: collectionView.tag) else {
+            return UICollectionViewCell()
+        }
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ccell", for: indexPath) as? NewsCollectionViewCell {
-            let article = articlesData[collectionView.tag][indexPath.row]
+            let article = articleList[indexPath.row]
             cell.setup(imageUrl: article.imageUrl, title: article.title)
             print("ccell \(article.title)")
             return cell
@@ -105,8 +124,7 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-extension NewsViewController {
+/*extension NewsViewController {
     func grabArticles(language: String) {
         ArticleService().getArticlesByLanguage(language: language, completionHandler: { [self] (articles) in
             self.articlesData = articles
@@ -117,4 +135,4 @@ extension NewsViewController {
             }
         })
     }
-}
+}*/
