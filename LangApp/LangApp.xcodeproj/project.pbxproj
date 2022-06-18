@@ -17,13 +17,24 @@
 		0C7E95F42835B3D6005F78A3 /* LangAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E95F32835B3D6005F78A3 /* LangAppTests.swift */; };
 		0C7E95FE2835B3D6005F78A3 /* LangAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E95FD2835B3D6005F78A3 /* LangAppUITests.swift */; };
 		0C7E96002835B3D6005F78A3 /* LangAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E95FF2835B3D6005F78A3 /* LangAppUITestsLaunchTests.swift */; };
-		0C7E96132835BFEE005F78A3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E96122835BFEE005F78A3 /* TabBar.swift */; };
+		0C7E96132835BFEE005F78A3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E96122835BFEE005F78A3 /* TabBarViewController.swift */; };
 		0C7E96152837E512005F78A3 /* UI+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E96142837E512005F78A3 /* UI+Image.swift */; };
 		0C7E96172837E9C8005F78A3 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E96162837E9C8005F78A3 /* NewsViewController.swift */; };
 		0C7E96192837EA1F005F78A3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E96182837EA1F005F78A3 /* VideoViewController.swift */; };
 		0C7E961B2837EA47005F78A3 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */; };
 		0C7E961D2837EA65005F78A3 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E961C2837EA65005F78A3 /* MusicViewController.swift */; };
 		0C7E96202837F685005F78A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7E961E2837F685005F78A3 /* Main.storyboard */; };
+		0C8F0C3E2855887900FD95CE /* State+newsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8F0C3D2855887900FD95CE /* State+newsState.swift */; };
+		0CBF1657285D097D00A2437F /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1654285D097D00A2437F /* ArticleService.swift */; };
+		0CBF1658285D097D00A2437F /* ArticlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1656285D097D00A2437F /* ArticlesModel.swift */; };
+		0CBF165B285D23AE00A2437F /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF165A285D23AE00A2437F /* NewsViewModel.swift */; };
+		0CBF165D285D276E00A2437F /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF165C285D276E00A2437F /* TabBarViewModel.swift */; };
+		0CBF165F285D2F5E00A2437F /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF165E285D2F5E00A2437F /* AppAction.swift */; };
+		0CBF1661285D337100A2437F /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1660285D337100A2437F /* AppReducer.swift */; };
+		0CBF1663285D34AD00A2437F /* AppReducer+tabBarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1662285D34AD00A2437F /* AppReducer+tabBarReducer.swift */; };
+		0CBF1665285D356100A2437F /* State+tabBarState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1664285D356100A2437F /* State+tabBarState.swift */; };
+		0CBF1667285D5A9700A2437F /* State+networkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1666285D5A9700A2437F /* State+networkState.swift */; };
+		0CBF1669285D5C1F00A2437F /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1668285D5C1F00A2437F /* Interactor.swift */; };
 		7CFF1E22491ACE9D02D2ECE2 /* Pods_LangApp_LangAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F0A47CFBFBCC3F3DA28464 /* Pods_LangApp_LangAppTests.framework */; };
 		88F86EA2D7F58C08491502B9 /* Pods_LangApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72447E27F31AEFFC814354C /* Pods_LangApp.framework */; };
 		AA559A2D18E7D624D0FFD345 /* Pods_LangApp_LangAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B33C3F1AAEC656C55C4547 /* Pods_LangApp_LangAppUITests.framework */; };
@@ -61,13 +72,24 @@
 		0C7E95F92835B3D6005F78A3 /* LangAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LangAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7E95FD2835B3D6005F78A3 /* LangAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangAppUITests.swift; sourceTree = "<group>"; };
 		0C7E95FF2835B3D6005F78A3 /* LangAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0C7E96122835BFEE005F78A3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		0C7E96122835BFEE005F78A3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0C7E96142837E512005F78A3 /* UI+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Image.swift"; sourceTree = "<group>"; };
 		0C7E96162837E9C8005F78A3 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		0C7E96182837EA1F005F78A3 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		0C7E961C2837EA65005F78A3 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		0C7E961F2837F685005F78A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C8F0C3D2855887900FD95CE /* State+newsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "State+newsState.swift"; sourceTree = "<group>"; };
+		0CBF1654285D097D00A2437F /* ArticleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
+		0CBF1656285D097D00A2437F /* ArticlesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesModel.swift; sourceTree = "<group>"; };
+		0CBF165A285D23AE00A2437F /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		0CBF165C285D276E00A2437F /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		0CBF165E285D2F5E00A2437F /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		0CBF1660285D337100A2437F /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		0CBF1662285D34AD00A2437F /* AppReducer+tabBarReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppReducer+tabBarReducer.swift"; sourceTree = "<group>"; };
+		0CBF1664285D356100A2437F /* State+tabBarState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "State+tabBarState.swift"; sourceTree = "<group>"; };
+		0CBF1666285D5A9700A2437F /* State+networkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "State+networkState.swift"; sourceTree = "<group>"; };
+		0CBF1668285D5C1F00A2437F /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		1E036F3F67AAF6CB85FC72C2 /* Pods-LangApp-LangAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangApp-LangAppUITests.release.xcconfig"; path = "Target Support Files/Pods-LangApp-LangAppUITests/Pods-LangApp-LangAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4D9634AC7EB082F29FAB700E /* Pods-LangApp-LangAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LangApp-LangAppTests.release.xcconfig"; path = "Target Support Files/Pods-LangApp-LangAppTests/Pods-LangApp-LangAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		57B33C3F1AAEC656C55C4547 /* Pods_LangApp_LangAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LangApp_LangAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +132,9 @@
 		0C7C03A9283986B600E673F0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0CBF1655285D097D00A2437F /* Model */,
+				0CBF1653285D097D00A2437F /* Service */,
+				0CBF1668285D5C1F00A2437F /* Interactor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -184,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				0C7C03AC2839888B00E673F0 /* News */,
-				0C7E96122835BFEE005F78A3 /* TabBar.swift */,
+				0C7E96122835BFEE005F78A3 /* TabBarViewController.swift */,
 				0C7E96182837EA1F005F78A3 /* VideoViewController.swift */,
 				0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */,
 				0C7E961C2837EA65005F78A3 /* MusicViewController.swift */,
@@ -197,6 +222,7 @@
 			children = (
 				0C7E960F2835B4F9005F78A3 /* Reducer */,
 				0C7E960E2835B4F3005F78A3 /* State */,
+				0CBF165E285D2F5E00A2437F /* AppAction.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -205,6 +231,9 @@
 			isa = PBXGroup;
 			children = (
 				0C7C03AA283987C400E673F0 /* State.swift */,
+				0CBF1666285D5A9700A2437F /* State+networkState.swift */,
+				0C8F0C3D2855887900FD95CE /* State+newsState.swift */,
+				0CBF1664285D356100A2437F /* State+tabBarState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -212,6 +241,8 @@
 		0C7E960F2835B4F9005F78A3 /* Reducer */ = {
 			isa = PBXGroup;
 			children = (
+				0CBF1660285D337100A2437F /* AppReducer.swift */,
+				0CBF1662285D34AD00A2437F /* AppReducer+tabBarReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -219,6 +250,8 @@
 		0C7E96102835B51A005F78A3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0CBF1659285D238800A2437F /* News */,
+				0CBF165C285D276E00A2437F /* TabBarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -230,6 +263,32 @@
 				0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		0CBF1653285D097D00A2437F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0CBF1654285D097D00A2437F /* ArticleService.swift */,
+			);
+			name = Service;
+			path = LangApp/Network/Service;
+			sourceTree = SOURCE_ROOT;
+		};
+		0CBF1655285D097D00A2437F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CBF1656285D097D00A2437F /* ArticlesModel.swift */,
+			);
+			name = Model;
+			path = LangApp/Network/Model;
+			sourceTree = SOURCE_ROOT;
+		};
+		0CBF1659285D238800A2437F /* News */ = {
+			isa = PBXGroup;
+			children = (
+				0CBF165A285D23AE00A2437F /* NewsViewModel.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		27AEF324BED7BD1B5608A6A2 /* Pods */ = {
@@ -512,17 +571,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CBF1663285D34AD00A2437F /* AppReducer+tabBarReducer.swift in Sources */,
 				0C7E96152837E512005F78A3 /* UI+Image.swift in Sources */,
+				0CBF1669285D5C1F00A2437F /* Interactor.swift in Sources */,
 				0C7E96192837EA1F005F78A3 /* VideoViewController.swift in Sources */,
+				0C8F0C3E2855887900FD95CE /* State+newsState.swift in Sources */,
+				0CBF1657285D097D00A2437F /* ArticleService.swift in Sources */,
 				0C7C03AE2839896F00E673F0 /* NewsTableViewCell.swift in Sources */,
+				0CBF165D285D276E00A2437F /* TabBarViewModel.swift in Sources */,
+				0CBF1665285D356100A2437F /* State+tabBarState.swift in Sources */,
 				0C7C03B0283989A200E673F0 /* NewsCollectionViewCell.swift in Sources */,
 				0C7E961B2837EA47005F78A3 /* PodcastViewController.swift in Sources */,
+				0CBF165B285D23AE00A2437F /* NewsViewModel.swift in Sources */,
 				0C7E95DD2835B3D2005F78A3 /* AppDelegate.swift in Sources */,
+				0CBF1667285D5A9700A2437F /* State+networkState.swift in Sources */,
+				0CBF1658285D097D00A2437F /* ArticlesModel.swift in Sources */,
 				0C7E96172837E9C8005F78A3 /* NewsViewController.swift in Sources */,
+				0CBF1661285D337100A2437F /* AppReducer.swift in Sources */,
 				0C7C03AB283987C400E673F0 /* State.swift in Sources */,
+				0CBF165F285D2F5E00A2437F /* AppAction.swift in Sources */,
 				0C7E961D2837EA65005F78A3 /* MusicViewController.swift in Sources */,
 				0C7E95DF2835B3D2005F78A3 /* SceneDelegate.swift in Sources */,
-				0C7E96132835BFEE005F78A3 /* TabBar.swift in Sources */,
+				0C7E96132835BFEE005F78A3 /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

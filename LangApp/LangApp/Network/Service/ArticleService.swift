@@ -14,7 +14,7 @@ class ArticleService {
     init() {}
     
     
-    func getArticlesByLanguage(language: String, completionHandler: @escaping ([[Article]]) -> Void){
+    func getArticlesByLanguage(language: String, completionHandler: @escaping (Articles) -> Void){
         let url = URL(string: self.urlPath + "/news/articles/language/\(language)")!
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -31,24 +31,7 @@ class ArticleService {
             
             if let data = data,
                let articleResults = try? JSONDecoder().decode(Articles.self, from: data) {
-                
-                var map: [Category: [Article]] = [:]
-                
-                for article in articleResults.results {
-                    let category = article.category
-                    if map[category] == nil {
-                        map[category] = []
-                    }
-                    map[category]?.append(article)
-                }
-                
-                var articleArrays: [[Article]] = []
-                for category in self.categoryOrder {
-                    if let list = map[category] {
-                        articleArrays.append(list)
-                    }
-                }
-                completionHandler(articleArrays)
+                completionHandler(articleResults)
             }
             
         })
