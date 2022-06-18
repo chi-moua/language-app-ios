@@ -9,5 +9,8 @@ import Foundation
 import ReSwift
 
 struct State {
-    var newsState: NewsState = NewsState()
+    var networkState: NetworkState = .init()
+    
+    var tabBarState: TabBarState?
+    var newsState: NewsState = .init()
 }

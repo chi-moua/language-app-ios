@@ -9,7 +9,7 @@ import UIKit
 
 import ReSwift
 
-//var store = Store<State>(reducer: appReducer, state: nil)
+var store = Store<State>(reducer: AppReducer.appReducer, state: State())
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
