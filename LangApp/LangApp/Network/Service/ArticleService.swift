@@ -13,13 +13,10 @@ class ArticleService {
     
     init() {}
     
-    //completionHandler: @escaping (Articles) -> Void
     static func getArticlesByLanguage(language: String) async throws -> Articles {
-        print("starting call")
         let url = URL(string: self.urlPath + "/news/articles/language/\(language)")!
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        //print(data)
         let articleResults = try JSONDecoder().decode(Articles.self, from: data)
         return articleResults
         

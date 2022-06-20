@@ -19,11 +19,9 @@ class NewsTableViewCell: UITableViewCell {
         collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "ccell")
         contentView.addSubview(collectionView)
         setupConstrainsts()
-        print("register ccell")
     }
     
     func setup<D: UICollectionViewDelegate & UICollectionViewDataSource>(delegate: D, forRow row: Int) {
-        print("register ccell delegate")
         collectionView.delegate = delegate
         collectionView.dataSource = delegate
         collectionView.tag = row

@@ -17,7 +17,6 @@ class Interactor: StoreSubscriber {
     }
     
     private func subscribe() {
-        print("subscribe interactor")
         store.subscribe(self) {
             $0.select {
                 $0.networkState.executionState
@@ -26,11 +25,9 @@ class Interactor: StoreSubscriber {
     }
     
     func newState(state: State.NetworkState.ExecutionState?) {
-        print("execution state interactor")
         guard case let .start(request) = state else {
             return
         }
-        print("new start state")
         
         //dispatch loading
         store.dispatch(Action.loading)
@@ -45,13 +42,9 @@ class Interactor: StoreSubscriber {
 
 extension Interactor {
     func handleRequest(_ request: Request) {
-        print("handle request")
         switch request {
         case .news:
-            print("handle news")
             ArticleService.fetchArticles("english", completion: { [self] articles in
-                print("starting finish")
-                    //print(articles)
                     self.store.dispatch(Action.complete(.news(articles)))
             })
         }

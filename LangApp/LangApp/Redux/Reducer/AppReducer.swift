@@ -10,9 +10,7 @@ import Foundation
 
 enum AppReducer {
     static func appReducer(action: Action, state: State?) -> State {
-        print("app reducer")
         guard let state = state else {
-            print("returning new state")
             return State()
         }
         

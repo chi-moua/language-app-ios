@@ -87,7 +87,6 @@ struct ArticlesData: Equatable {
         }
         
         if let categoryList = self.articles[category] {
-            print("list count is \(categoryList.count)")
             return categoryList
         }
         return nil

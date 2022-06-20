@@ -11,7 +11,6 @@ import Foundation
 
 extension AppReducer {
     static func interactorReducer(action: Interactor.Action, state: State) -> State {
-        print("interactor reducer")
         var state = state
         
         switch action {
@@ -32,7 +31,6 @@ extension AppReducer {
         case let .news(response):
             let articles = response as Articles
             state.newsState.articles = ArticlesData(articles.results)
-            print("articles here \(state.newsState.articles)")
         case .error:
             return state
         }
