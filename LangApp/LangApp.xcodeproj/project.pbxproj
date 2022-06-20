@@ -24,6 +24,7 @@
 		0C7E961B2837EA47005F78A3 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */; };
 		0C7E961D2837EA65005F78A3 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7E961C2837EA65005F78A3 /* MusicViewController.swift */; };
 		0C7E96202837F685005F78A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7E961E2837F685005F78A3 /* Main.storyboard */; };
+		0C8BDB10285EBB8B00067A66 /* AppReducer+interactorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BDB0F285EBB8B00067A66 /* AppReducer+interactorReducer.swift */; };
 		0C8F0C3E2855887900FD95CE /* State+newsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8F0C3D2855887900FD95CE /* State+newsState.swift */; };
 		0CBF1657285D097D00A2437F /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1654285D097D00A2437F /* ArticleService.swift */; };
 		0CBF1658285D097D00A2437F /* ArticlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF1656285D097D00A2437F /* ArticlesModel.swift */; };
@@ -79,6 +80,7 @@
 		0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		0C7E961C2837EA65005F78A3 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		0C7E961F2837F685005F78A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C8BDB0F285EBB8B00067A66 /* AppReducer+interactorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppReducer+interactorReducer.swift"; sourceTree = "<group>"; };
 		0C8F0C3D2855887900FD95CE /* State+newsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "State+newsState.swift"; sourceTree = "<group>"; };
 		0CBF1654285D097D00A2437F /* ArticleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
 		0CBF1656285D097D00A2437F /* ArticlesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesModel.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				0CBF1660285D337100A2437F /* AppReducer.swift */,
 				0CBF1662285D34AD00A2437F /* AppReducer+tabBarReducer.swift */,
+				0C8BDB0F285EBB8B00067A66 /* AppReducer+interactorReducer.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				0CBF1667285D5A9700A2437F /* State+networkState.swift in Sources */,
 				0CBF1658285D097D00A2437F /* ArticlesModel.swift in Sources */,
 				0C7E96172837E9C8005F78A3 /* NewsViewController.swift in Sources */,
+				0C8BDB10285EBB8B00067A66 /* AppReducer+interactorReducer.swift in Sources */,
 				0CBF1661285D337100A2437F /* AppReducer.swift in Sources */,
 				0C7C03AB283987C400E673F0 /* State.swift in Sources */,
 				0CBF165F285D2F5E00A2437F /* AppAction.swift in Sources */,
