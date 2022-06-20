@@ -4,6 +4,7 @@
 
 ### What is the new behavior?
 
+----
 
 Pre-review checklist
 - [ ] PR title follows `<type>:<description>` convention
