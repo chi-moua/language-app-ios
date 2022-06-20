@@ -8,33 +8,28 @@
 import Foundation
 
 class ArticleService {
-    let urlPath = "https://news-app-backend-fastapi.herokuapp.com"
-    let categoryOrder: [Category] = [.business, .technology, .entertainment, .sports, .science, .health]
+    static let urlPath = "https://news-app-backend-fastapi.herokuapp.com"
+    static let categoryOrder: [Category] = [.business, .technology, .entertainment, .sports, .science, .health]
     
     init() {}
     
-    
-    func getArticlesByLanguage(language: String, completionHandler: @escaping (Articles) -> Void){
+    static func getArticlesByLanguage(language: String) async throws -> Articles {
         let url = URL(string: self.urlPath + "/news/articles/language/\(language)")!
+        let urlRequest = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let articleResults = try JSONDecoder().decode(Articles.self, from: data)
+        return articleResults
         
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            if error != nil {
-                print("Error with fetching articles with language \(language)")
-                return
+    }
+    
+    static func fetchArticles(_ language: String, completion: @escaping ((Articles) -> Void)) {
+        Task {
+            do {
+                let articles = try await ArticleService.getArticlesByLanguage(language: language)
+                completion(articles)
+            } catch {
+                print(error)
             }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                        (200...299).contains(httpResponse.statusCode) else {
-                            print("Error with the response, unexpected status code: \(response)")
-                    return
-                  }
-            
-            if let data = data,
-               let articleResults = try? JSONDecoder().decode(Articles.self, from: data) {
-                completionHandler(articleResults)
-            }
-            
-        })
-        task.resume()
+        }
     }
 }

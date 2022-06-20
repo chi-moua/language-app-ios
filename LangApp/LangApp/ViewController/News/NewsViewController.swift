@@ -8,7 +8,7 @@
 import ReSwift
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, StoreSubscriber {
     var tableView: UITableView!
     var safeArea: UILayoutGuide!
     
@@ -31,7 +31,20 @@ class NewsViewController: UIViewController {
         tableView = UITableView()
         safeArea = view.layoutMarginsGuide
         setupStaticView()
+        subscribe()
         //grabArticles(language: self.selectedLanguage)
+    }
+    
+    private func subscribe() {
+        store.subscribe(self) {
+            $0.select {
+                $0.newsState
+            }.skipRepeats()
+        }
+    }
+    
+    func newState(state: State.NewsState) {
+        setupDynamicView(state: state)
     }
     
     func setupStaticView() {
@@ -50,6 +63,10 @@ class NewsViewController: UIViewController {
     
     func setupDynamicView(state: State.NewsState) {
         viewModel.articlesData = state.articles
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
 }
@@ -61,7 +78,6 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "tcell", for: indexPath) as? NewsTableViewCell {
-            print("tcell cell forRowAt")
             cell.initialize()
             return cell
         }
@@ -73,7 +89,6 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("tableview cell will display")
         if let tableViewCell = cell as? NewsTableViewCell {
             tableViewCell.setup(delegate: self, forRow: indexPath.section)
         }
@@ -102,7 +117,6 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ccell", for: indexPath) as? NewsCollectionViewCell {
             let article = articleList[indexPath.row]
             cell.setup(imageUrl: article.imageUrl, title: article.title)
-            print("ccell \(article.title)")
             return cell
         }
         
@@ -123,16 +137,3 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 400, height: 180)
     }
 }
-
-/*extension NewsViewController {
-    func grabArticles(language: String) {
-        ArticleService().getArticlesByLanguage(language: language, completionHandler: { [self] (articles) in
-            self.articlesData = articles
-            //print(articles)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
-}*/

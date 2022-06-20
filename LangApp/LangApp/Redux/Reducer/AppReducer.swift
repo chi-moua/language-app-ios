@@ -18,8 +18,11 @@ enum AppReducer {
         case let scopedAction as TabBarViewController.Action:
             return tabBarReducer(action: scopedAction, state: state)
             
+        case let scopedAction as Interactor.Action:
+            return interactorReducer(action: scopedAction, state: state)
+            
         default:
-            return state
+            fatalError("reducer not added for \(action)")
         }
     }
 }

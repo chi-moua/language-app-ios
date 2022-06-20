@@ -72,7 +72,6 @@ extension NewsCollectionViewCell {
             guard let data = data, error == nil else { return }
             // always update the UI from the main thread
             DispatchQueue.main.async() {
-                print("downloading image")
                 self.imageView.image = UIImage(data: data)
             }
         }

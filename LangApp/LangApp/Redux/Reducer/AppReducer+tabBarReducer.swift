@@ -12,6 +12,8 @@ extension AppReducer {
         var state = state
         
         switch action {
+        case .viewWillAppear:
+            state.networkState.executionState = .start(.news)
         case let .tabBarItemClicked(val):
             if let tabView = State.TabBarState(rawValue: val) {
                 state.tabBarState = tabView

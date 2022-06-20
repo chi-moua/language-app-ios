@@ -29,6 +29,11 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.dispatch(Action.viewWillAppear)
+    }
+    
     private func setup() {
         setupViewControllers()
         setupStyle()
@@ -95,11 +100,16 @@ extension TabBarViewController {
 extension TabBarViewController {
     enum Action: AppAction, Equatable {
         case tabBarItemClicked(Int)
+        case viewWillAppear
         
         static func == (lhs: Action, rhs: Action) -> Bool {
             switch (lhs, rhs) {
             case let (.tabBarItemClicked(lhsVal), .tabBarItemClicked(rhsVal)):
                 return lhsVal == rhsVal
+            case (.viewWillAppear, .viewWillAppear):
+                return true
+            default:
+                return false
             }
         }
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 extension State {
-    enum TabBarState: Int {
+    enum TabBarState: Int, Equatable {
         case news = 0
         case video = 1
         case podCast = 2

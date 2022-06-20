@@ -8,7 +8,7 @@
 import Foundation
 import ReSwift
 
-struct State {
+struct State: Equatable {
     var networkState: NetworkState = .init()
     
     var tabBarState: TabBarState?
