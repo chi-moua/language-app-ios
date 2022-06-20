@@ -8,7 +8,7 @@
 import ReSwift
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, StoreSubscriber {
     var tableView: UITableView!
     var safeArea: UILayoutGuide!
     
@@ -31,7 +31,20 @@ class NewsViewController: UIViewController {
         tableView = UITableView()
         safeArea = view.layoutMarginsGuide
         setupStaticView()
+        subscribe()
         //grabArticles(language: self.selectedLanguage)
+    }
+    
+    private func subscribe() {
+        store.subscribe(self) {
+            $0.select {
+                $0.newsState
+            }.skipRepeats()
+        }
+    }
+    
+    func newState(state: State.NewsState) {
+        setupDynamicView(state: state)
     }
     
     func setupStaticView() {
@@ -50,6 +63,10 @@ class NewsViewController: UIViewController {
     
     func setupDynamicView(state: State.NewsState) {
         viewModel.articlesData = state.articles
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
 }

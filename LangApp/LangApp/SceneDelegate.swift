@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         /// 3. Create a view hierarchy programmatically
+        let interactor = Interactor.init(store: store)
         let viewController = TabBarViewController(store: store)
         //let navigation = UINavigationController(rootViewController: viewController)
         

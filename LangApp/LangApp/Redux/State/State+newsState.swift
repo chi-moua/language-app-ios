@@ -8,7 +8,7 @@
 import Foundation
 
 extension State {
-    struct NewsState {
+    struct NewsState: Equatable {
         var articles: ArticlesData = ArticlesData([Article]())
         var selectedLanguage: Language = .english
         
