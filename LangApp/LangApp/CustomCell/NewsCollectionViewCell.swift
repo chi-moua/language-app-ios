@@ -16,6 +16,11 @@ class NewsCollectionViewCell: UICollectionViewCell {
     private var imageUrl: String!
     private var title: String!
     
+    override func prepareForReuse() {
+        titleLabel.text = ""
+        imageView.image = nil
+    }
+    
     func setup(imageUrl: String, title: String) {
         self.imageUrl = imageUrl
         self.title = title

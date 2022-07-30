@@ -13,7 +13,7 @@ class ArticleService {
     
     init() {}
     
-    static func getArticlesByLanguage(language: String) async throws -> Articles {
+    @MainActor static func getArticlesByLanguage(language: String) async throws -> Articles {
         let url = URL(string: self.urlPath + "/news/articles/language/\(language)")!
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
