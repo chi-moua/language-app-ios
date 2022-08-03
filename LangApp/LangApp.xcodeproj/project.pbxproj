@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C68F1F528960289002D3F82 /* VideoSubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F1F428960289002D3F82 /* VideoSubscriptionTableViewCell.swift */; };
+		0C68F1F928960348002D3F82 /* VideoSubscriptionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F1F828960348002D3F82 /* VideoSubscriptionCellModel.swift */; };
+		0C68F1FD289607A6002D3F82 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F1FC289607A6002D3F82 /* UIImageView.swift */; };
+		0C68F1FF2896103B002D3F82 /* VideoChannelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F1FE2896103B002D3F82 /* VideoChannelPicker.swift */; };
+		0C68F203289728D6002D3F82 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F202289728D6002D3F82 /* SearchBar.swift */; };
+		0C68F2052899827D002D3F82 /* State+videoChannelPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F2042899827D002D3F82 /* State+videoChannelPickerState.swift */; };
+		0C68F207289A0A8F002D3F82 /* VideoChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68F206289A0A8F002D3F82 /* VideoChannelViewModel.swift */; };
 		0C7C03AB283987C400E673F0 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C03AA283987C400E673F0 /* State.swift */; };
 		0C7C03AE2839896F00E673F0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C03AD2839896F00E673F0 /* NewsTableViewCell.swift */; };
 		0C7C03B0283989A200E673F0 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */; };
@@ -59,6 +66,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C68F1F428960289002D3F82 /* VideoSubscriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSubscriptionTableViewCell.swift; sourceTree = "<group>"; };
+		0C68F1F828960348002D3F82 /* VideoSubscriptionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSubscriptionCellModel.swift; sourceTree = "<group>"; };
+		0C68F1FC289607A6002D3F82 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		0C68F1FE2896103B002D3F82 /* VideoChannelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChannelPicker.swift; sourceTree = "<group>"; };
+		0C68F202289728D6002D3F82 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		0C68F2042899827D002D3F82 /* State+videoChannelPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "State+videoChannelPickerState.swift"; sourceTree = "<group>"; };
+		0C68F206289A0A8F002D3F82 /* VideoChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChannelViewModel.swift; sourceTree = "<group>"; };
 		0C7C03AA283987C400E673F0 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		0C7C03AD2839896F00E673F0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -131,6 +145,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C68F1F328960243002D3F82 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0C7E96182837EA1F005F78A3 /* VideoViewController.swift */,
+				0C68F1FE2896103B002D3F82 /* VideoChannelPicker.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		0C68F1F6289602D1002D3F82 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0C68F206289A0A8F002D3F82 /* VideoChannelViewModel.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		0C68F1FA28960750002D3F82 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0C7E96142837E512005F78A3 /* UI+Image.swift */,
+				0C68F1FB28960779002D3F82 /* Common */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0C68F1FB28960779002D3F82 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0C68F1FC289607A6002D3F82 /* UIImageView.swift */,
+				0C68F202289728D6002D3F82 /* SearchBar.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		0C7C03A9283986B600E673F0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,13 +226,13 @@
 				0C7E95EA2835B3D6005F78A3 /* Info.plist */,
 				0C7E95DC2835B3D2005F78A3 /* AppDelegate.swift */,
 				0C7E95DE2835B3D2005F78A3 /* SceneDelegate.swift */,
-				0C7E96142837E512005F78A3 /* UI+Image.swift */,
 				0C7E95E52835B3D6005F78A3 /* Assets.xcassets */,
 				0C7E96112835B683005F78A3 /* CustomCell */,
 				0C7E95E72835B3D6005F78A3 /* LaunchScreen.storyboard */,
 				0C7E961E2837F685005F78A3 /* Main.storyboard */,
 				0C7C03A9283986B600E673F0 /* Network */,
 				0C7E960D2835B4DF005F78A3 /* Redux */,
+				0C68F1FA28960750002D3F82 /* UI */,
 				0C7E960C2835B4CF005F78A3 /* ViewController */,
 				0C7E96102835B51A005F78A3 /* ViewModel */,
 			);
@@ -210,9 +259,9 @@
 		0C7E960C2835B4CF005F78A3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0C68F1F328960243002D3F82 /* Video */,
 				0C7C03AC2839888B00E673F0 /* News */,
 				0C7E96122835BFEE005F78A3 /* TabBarViewController.swift */,
-				0C7E96182837EA1F005F78A3 /* VideoViewController.swift */,
 				0C7E961A2837EA47005F78A3 /* PodcastViewController.swift */,
 				0C7E961C2837EA65005F78A3 /* MusicViewController.swift */,
 			);
@@ -236,6 +285,7 @@
 				0CBF1666285D5A9700A2437F /* State+networkState.swift */,
 				0C8F0C3D2855887900FD95CE /* State+newsState.swift */,
 				0CBF1664285D356100A2437F /* State+tabBarState.swift */,
+				0C68F2042899827D002D3F82 /* State+videoChannelPickerState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -253,6 +303,7 @@
 		0C7E96102835B51A005F78A3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0C68F1F6289602D1002D3F82 /* Video */,
 				0CBF1659285D238800A2437F /* News */,
 				0CBF165C285D276E00A2437F /* TabBarViewModel.swift */,
 			);
@@ -264,6 +315,8 @@
 			children = (
 				0C7C03AD2839896F00E673F0 /* NewsTableViewCell.swift */,
 				0C7C03AF283989A200E673F0 /* NewsCollectionViewCell.swift */,
+				0C68F1F428960289002D3F82 /* VideoSubscriptionTableViewCell.swift */,
+				0C68F1F828960348002D3F82 /* VideoSubscriptionCellModel.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -575,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CBF1663285D34AD00A2437F /* AppReducer+tabBarReducer.swift in Sources */,
+				0C68F2052899827D002D3F82 /* State+videoChannelPickerState.swift in Sources */,
 				0C7E96152837E512005F78A3 /* UI+Image.swift in Sources */,
 				0CBF1669285D5C1F00A2437F /* Interactor.swift in Sources */,
 				0C7E96192837EA1F005F78A3 /* VideoViewController.swift in Sources */,
@@ -583,19 +637,25 @@
 				0C7C03AE2839896F00E673F0 /* NewsTableViewCell.swift in Sources */,
 				0CBF165D285D276E00A2437F /* TabBarViewModel.swift in Sources */,
 				0CBF1665285D356100A2437F /* State+tabBarState.swift in Sources */,
+				0C68F1F928960348002D3F82 /* VideoSubscriptionCellModel.swift in Sources */,
 				0C7C03B0283989A200E673F0 /* NewsCollectionViewCell.swift in Sources */,
 				0C7E961B2837EA47005F78A3 /* PodcastViewController.swift in Sources */,
 				0CBF165B285D23AE00A2437F /* NewsViewModel.swift in Sources */,
 				0C7E95DD2835B3D2005F78A3 /* AppDelegate.swift in Sources */,
 				0CBF1667285D5A9700A2437F /* State+networkState.swift in Sources */,
 				0CBF1658285D097D00A2437F /* ArticlesModel.swift in Sources */,
+				0C68F1FD289607A6002D3F82 /* UIImageView.swift in Sources */,
 				0C7E96172837E9C8005F78A3 /* NewsViewController.swift in Sources */,
 				0C8BDB10285EBB8B00067A66 /* AppReducer+interactorReducer.swift in Sources */,
 				0CBF1661285D337100A2437F /* AppReducer.swift in Sources */,
+				0C68F1FF2896103B002D3F82 /* VideoChannelPicker.swift in Sources */,
+				0C68F203289728D6002D3F82 /* SearchBar.swift in Sources */,
 				0C7C03AB283987C400E673F0 /* State.swift in Sources */,
+				0C68F207289A0A8F002D3F82 /* VideoChannelViewModel.swift in Sources */,
 				0CBF165F285D2F5E00A2437F /* AppAction.swift in Sources */,
 				0C7E961D2837EA65005F78A3 /* MusicViewController.swift in Sources */,
 				0C7E95DF2835B3D2005F78A3 /* SceneDelegate.swift in Sources */,
+				0C68F1F528960289002D3F82 /* VideoSubscriptionTableViewCell.swift in Sources */,
 				0C7E96132835BFEE005F78A3 /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

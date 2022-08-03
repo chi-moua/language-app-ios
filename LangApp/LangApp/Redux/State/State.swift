@@ -13,4 +13,5 @@ struct State: Equatable {
     
     var tabBarState: TabBarState?
     var newsState: NewsState = .init()
+    var videoChannelPickerState: VideoChannelPickerState = .init()
 }
