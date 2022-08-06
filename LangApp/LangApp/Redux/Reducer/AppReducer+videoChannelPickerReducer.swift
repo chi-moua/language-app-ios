@@ -12,14 +12,36 @@ extension AppReducer {
         var state = state
         
         switch action {
-        case let .addChannel(row):
+        case .addChannel(_):
             // Add row to user picked
             return state
             
-        case let .updateSearch(text):
-            return state
+        case let .editSearch(isEditing):
+            state.videoChannelPickerState.searchText.isFocus = isEditing
+            
+        case let .search(query):
+            state.videoChannelPickerState.searchText.text = query
+            state.videoChannelPickerState.filterChannels()
         }
         
         return state
+    }
+}
+
+extension State.VideoChannelPickerState {
+    mutating func filterChannels() {
+        // Filtering should happen when the user editing is completed
+        if searchText.isFocus {
+           return
+        }
+        
+        // All channels should appear with an empty query
+        if searchText.text.isEmpty {
+            filteredChannels = channels
+        }
+        
+        filteredChannels = channels.filter {
+            $0.channelTitle.hasPrefix(searchText.text)
+        }
     }
 }

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct TextFieldState: Equatable {
+    var text = ""
+    var isHidden = ""
+    var isFocus = false
+}

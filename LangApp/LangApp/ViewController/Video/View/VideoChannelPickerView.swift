@@ -8,13 +8,35 @@
 import UIKit
 
 class VideoChannelPickerView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let vStackView: UIStackView = .init()
+    let tableView: UITableView = .init()
+    let searchBar: UISearchBar = .init()
+    let cellName: String
+    
+    init(cellName: String) {
+        self.cellName = cellName
+        super.init()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func createSubViews() {
+        setUpStackView()
+    }
+    
+    private func setUpStackView() {
+        vStackView.alignment = .fill
+        vStackView.axis = .vertical
+        vStackView.spacing = 12.0
+        
+        [tableView, searchBar].forEach {
+            vStackView.addArrangedSubview($0)
+        }
+    }
+    
+    private func setUpTableView() {
+        tableView.register(VideoSubscriptionTableViewCell.self, forCellReuseIdentifier: cellName)
+    }
 }

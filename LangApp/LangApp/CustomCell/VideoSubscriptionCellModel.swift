@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VideoSubscriptionCellModel {
+struct VideoSubscriptionCellModel: Equatable {
     let imageURL: String
     let channelTitle: String
 }

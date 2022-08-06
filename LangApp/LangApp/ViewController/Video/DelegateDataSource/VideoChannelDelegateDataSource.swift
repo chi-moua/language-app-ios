@@ -6,3 +6,37 @@
 //
 
 import Foundation
+import UIKit
+import ReSwift
+
+class VideoChannelDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+    typealias Action = VideoChannelPicker.Action
+    
+    var viewModel: VideoChannelViewModel
+    
+    init(
+        store: Store<State>,
+        viewModel: VideoChannelViewModel
+    ) {
+        self.viewModel = viewModel
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reusableCellName, for: indexPath) as? VideoSubscriptionTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.setup(model: viewModel.cells[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        store.dispatch(Action.addChannel(row: indexPath.row))
+    }
+    
+    
+}

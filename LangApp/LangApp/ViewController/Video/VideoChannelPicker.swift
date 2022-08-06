@@ -9,26 +9,22 @@ import Foundation
 import UIKit
 import ReSwift
 
-class VideoChannelPicker:
-    UIViewController,
-    UITableViewDelegate,
-    UITableViewDataSource,
-    SearchBarDelegate,
-    StoreSubscriber
-{
-    let vStackView: UIStackView!
-    let tableView: UITableView!
-    let searchBar: SearchBarTextField!
-    
+class VideoChannelPicker: UIViewController, UISearchBarDelegate, StoreSubscriber {
+    private let mainView: VideoChannelPickerView
+    private let tableViewSource: VideoChannelDelegateDataSource
+    private let searchBarDelegate: SearchBarDelegateSource
     private let store: Store<State>
     private var viewModel: VideoChannelViewModel
     
     init(store: Store<State>) {
-        vStackView = .init()
-        tableView = .init()
-        searchBar = .init()
         viewModel = .init(state: store.state.videoChannelPickerState)
-        
+        mainView = .init(cellName: viewModel.reusableCellName)
+        tableViewSource = .init(store: store, viewModel: viewModel)
+        searchBarDelegate = .init(
+            store: store,
+            editAction: VideoChannelPicker.editAction,
+            textChangeAction: VideoChannelPicker.textChangeAction
+        )
         self.store = store
         super.init()
     }
@@ -39,11 +35,9 @@ class VideoChannelPicker:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        searchBar.delegate = self
-        
+        mainView.tableView.dataSource = tableViewSource
+        mainView.tableView.delegate = tableViewSource
+        mainView.searchBar.delegate = self
         subscribe()
         setUpStaticView()
     }
@@ -65,69 +59,37 @@ class VideoChannelPicker:
 
 // MARK: - View Setup
 extension VideoChannelPicker {
-    private func setUpStaticView() {
-        searchBar.setUp(
-            keyboardType: .asciiCapable
-        )
-        
-        setUpStackView()
-        registerCell()
-        
-        // main view
-        view.addSubview(vStackView)
-    }
-    
-    private func setUpStackView() {
-        vStackView.alignment = .fill
-        vStackView.axis = .vertical
-        vStackView.spacing = 12.0
-        
-        [tableView, searchBar].forEach {
-            vStackView.addArrangedSubview($0)
-        }
+    func setUpStaticView() {
+        view = mainView
     }
     
     func newState(state: State.VideoChannelPickerState) {
-        viewModel.setUp(channels: state.channels)
-        tableView.reloadData()
-    }
-}
-
-// MARK: - TableView
-extension VideoChannelPicker {
-    private func registerCell() {
-        tableView.register(VideoSubscriptionTableViewCell.self, forCellReuseIdentifier: "channelCell")
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? VideoSubscriptionTableViewCell else {
-            return UITableViewCell()
+        if state.filteredChannels != viewModel.cells {
+            viewModel.cells = state.filteredChannels
+            mainView.tableView.reloadData()
         }
-        
-        cell.setup(model: viewModel.cells[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        store.dispatch(Action.addChannel(row: indexPath.row))
     }
 }
 
-// MARK: - TextField
 extension VideoChannelPicker {
-    func textFieldDidChange(_ textFieldViewController: SearchBarTextField, text: String?) {
-        store.dispatch(Action.updateSearch(text: text ?? ""))
+    static var editAction: (Bool) -> Action {
+        { (val) -> Action in
+            return Action.editSearch(val)
+        }
+    }
+    
+    static var textChangeAction: (String) -> Action {
+        { (val) -> Action in
+            return Action.search(val)
+        }
     }
 }
 
 // MARK: - Actions
 extension VideoChannelPicker {
     enum Action: AppAction {
-        case updateSearch(text: String)
+        case editSearch(_ isEditing: Bool)
+        case search(_ text: String)
         case addChannel(row: Int)
     }
 }

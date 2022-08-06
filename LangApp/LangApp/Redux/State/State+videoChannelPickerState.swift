@@ -9,7 +9,8 @@ import Foundation
 
 extension State {
     struct VideoChannelPickerState: Equatable {
-        var searchText: String = ""
-        var channels: [String] = []
+        var searchText: TextFieldState = .init()
+        var channels: [VideoSubscriptionCellModel] = []
+        var filteredChannels: [VideoSubscriptionCellModel] = []
     }
 }
