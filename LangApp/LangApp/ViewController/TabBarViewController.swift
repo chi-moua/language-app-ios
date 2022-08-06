@@ -51,7 +51,7 @@ extension TabBarViewController {
 extension TabBarViewController {
     private func setupViewControllers() {
         let newsTab = NewsViewController(store: store)
-        let videoTab = VideoViewController()
+        let videoTab = VideoChannelPicker()
         let podcastTab = PodcastViewController()
         let musicTab = MusicViewController()
 

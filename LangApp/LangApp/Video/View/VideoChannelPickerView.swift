@@ -11,10 +11,10 @@ class VideoChannelPickerView: UIView {
     let vStackView: UIStackView = .init()
     let tableView: UITableView = .init()
     let searchBar: UISearchBar = .init()
-    let cellName: String
+    let viewModel: VideoChannelViewModel
     
-    init(cellName: String) {
-        self.cellName = cellName
+    init(with viewModel: VideoChannelViewModel) {
+        self.viewModel = viewModel
         super.init()
     }
     
@@ -37,6 +37,6 @@ class VideoChannelPickerView: UIView {
     }
     
     private func setUpTableView() {
-        tableView.register(VideoSubscriptionTableViewCell.self, forCellReuseIdentifier: cellName)
+        tableView.register(VideoSubscriptionTableViewCell.self, forCellReuseIdentifier: viewModel.reusableCellName)
     }
 }

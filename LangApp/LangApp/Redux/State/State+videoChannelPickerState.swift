@@ -12,5 +12,6 @@ extension State {
         var searchText: TextFieldState = .init()
         var channels: [VideoSubscriptionCellModel] = []
         var filteredChannels: [VideoSubscriptionCellModel] = []
+        var selectedChannels: [VideoSubscriptionCellModel] = []
     }
 }

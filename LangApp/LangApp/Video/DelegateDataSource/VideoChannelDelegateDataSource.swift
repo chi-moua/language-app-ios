@@ -10,19 +10,19 @@ import UIKit
 import ReSwift
 
 class VideoChannelDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
-    typealias Action = VideoChannelPicker.Action
+    typealias Action = VideoChannelPickerViewController.Action
     
     var viewModel: VideoChannelViewModel
     
     init(
         store: Store<State>,
-        viewModel: VideoChannelViewModel
+        with viewModel: VideoChannelViewModel
     ) {
         self.viewModel = viewModel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

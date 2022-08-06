@@ -12,9 +12,9 @@ extension AppReducer {
         var state = state
         
         switch action {
-        case .addChannel(_):
-            // Add row to user picked
-            return state
+        case let .addChannel(row):
+            let selectedChannel = state.videoChannelPickerState.filteredChannels[row]
+            state.videoChannelPickerState.selectedChannels.append(selectedChannel)
             
         case let .editSearch(isEditing):
             state.videoChannelPickerState.searchText.isFocus = isEditing
@@ -22,6 +22,10 @@ extension AppReducer {
         case let .search(query):
             state.videoChannelPickerState.searchText.text = query
             state.videoChannelPickerState.filterChannels()
+            
+        case .viewWillDisappear:
+            //make network call to save selected channels
+            return state
         }
         
         return state

@@ -1,5 +1,5 @@
 //
-//  VideoChannelPicker.swift
+//  VideoChannelPickerViewController.swift
 //  LangApp
 //
 //  Created by Kongfuechi Moua on 7/30/22.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-class VideoChannelPicker: UIViewController, UISearchBarDelegate, StoreSubscriber {
+class VideoChannelPickerViewController: UIViewController, StoreSubscriber {
     private let mainView: VideoChannelPickerView
     private let tableViewSource: VideoChannelDelegateDataSource
     private let searchBarDelegate: SearchBarDelegateSource
@@ -18,12 +18,12 @@ class VideoChannelPicker: UIViewController, UISearchBarDelegate, StoreSubscriber
     
     init(store: Store<State>) {
         viewModel = .init(state: store.state.videoChannelPickerState)
-        mainView = .init(cellName: viewModel.reusableCellName)
-        tableViewSource = .init(store: store, viewModel: viewModel)
+        mainView = .init(with: viewModel)
+        tableViewSource = .init(store: store, with: viewModel)
         searchBarDelegate = .init(
             store: store,
-            editAction: VideoChannelPicker.editAction,
-            textChangeAction: VideoChannelPicker.textChangeAction
+            editAction: VideoChannelPickerViewController.editAction,
+            textChangeAction: VideoChannelPickerViewController.textChangeAction
         )
         self.store = store
         super.init()
@@ -37,14 +37,13 @@ class VideoChannelPicker: UIViewController, UISearchBarDelegate, StoreSubscriber
         super.viewDidLoad()
         mainView.tableView.dataSource = tableViewSource
         mainView.tableView.delegate = tableViewSource
-        mainView.searchBar.delegate = self
+        mainView.searchBar.delegate = searchBarDelegate
         subscribe()
         setUpStaticView()
     }
-        
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+            
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     private func subscribe() {
@@ -58,7 +57,7 @@ class VideoChannelPicker: UIViewController, UISearchBarDelegate, StoreSubscriber
 }
 
 // MARK: - View Setup
-extension VideoChannelPicker {
+extension VideoChannelPickerViewController {
     func setUpStaticView() {
         view = mainView
     }
@@ -71,7 +70,7 @@ extension VideoChannelPicker {
     }
 }
 
-extension VideoChannelPicker {
+extension VideoChannelPickerViewController {
     static var editAction: (Bool) -> Action {
         { (val) -> Action in
             return Action.editSearch(val)
@@ -86,10 +85,11 @@ extension VideoChannelPicker {
 }
 
 // MARK: - Actions
-extension VideoChannelPicker {
+extension VideoChannelPickerViewController {
     enum Action: AppAction {
         case editSearch(_ isEditing: Bool)
         case search(_ text: String)
         case addChannel(row: Int)
+        case viewWillDisappear
     }
 }
